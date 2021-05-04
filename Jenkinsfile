@@ -18,6 +18,14 @@ pipeline {
     }
   }
   stages {
+    stage('Pre install') {
+      steps {
+        container('node') {
+          sh 'sudo apt-get install -y make'
+          sh 'make test-image deps'
+        }
+      }
+    }
     stage('Run npm install') {
       steps {
         container('node') {
