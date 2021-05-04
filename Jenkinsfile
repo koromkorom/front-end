@@ -21,7 +21,7 @@ pipeline {
     stage('Pre install') {
       steps {
         container('node') {
-          sh 'sudo apt-get install -y make'
+          sh 'apt-get install -y make'
           sh 'make test-image deps'
         }
       }
