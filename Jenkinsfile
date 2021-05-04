@@ -25,5 +25,12 @@ pipeline {
         }
       }
     }
+    stage('Make test') {
+      steps {
+        container('node') {
+          sh 'make test'
+        }
+      }
+    }
   }
 }
