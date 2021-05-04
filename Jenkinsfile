@@ -26,6 +26,7 @@ pipeline {
     stage('Pre install') {
       steps {
         container('docker') {
+          sh 'apt-get install -y make'
           sh 'make test-image deps'
         }
       }
