@@ -14,34 +14,14 @@ pipeline {
             command:
             - cat
             tty: true
-          - name: docker
-            image: docker:latest
-            command:
-            - cat
-            tty: true
         """.stripIndent()
     }
   }
   stages {
-    stage('Pre install') {
-      steps {
-        container('docker') {
-          sh 'apt-get install -y make'
-          sh 'make test-image deps'
-        }
-      }
-    }
     stage('Run npm install') {
       steps {
         container('node') {
           sh 'npm install'
-        }
-      }
-    }
-    stage('Make test') {
-      steps {
-        container('docker') {
-          sh 'make test'
         }
       }
     }
